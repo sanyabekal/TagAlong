@@ -1,5 +1,6 @@
 package com.example.carpoolapp.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.carpoolapp.DashboardActivity;
 import com.example.carpoolapp.R;
 import com.example.carpoolapp.databinding.FragmentDashboardBinding;
 
@@ -29,8 +31,10 @@ public class DashboardFragment extends Fragment {
 
         binding.dashboardImage.setImageResource(R.drawable.ic_launcher_foreground); // or any image
         binding.startButton.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Start button clicked!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            startActivity(intent);
         });
+
         return root;
     }
 
