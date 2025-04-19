@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "602911991986",
+    "project_id": "tagalongsan",
+    "storage_bucket": "tagalongsan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602911991986:android:2c26f3a0bf428b29fe01ab",
+        "android_client_info": {
+          "package_name": "com.example.carpoolapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQXRtaYgUtLLqF1ygxEeM12v_M5bm__9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
