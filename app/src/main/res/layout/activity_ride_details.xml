@@ -1,0 +1,45 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Ride Information -->
+    <TextView
+        android:id="@+id/rideInfoTextView"
+        android:text="Source: XYZ | Destination: ABC"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- Ride Time -->
+    <TextView
+        android:id="@+id/rideTimeTextView"
+        android:text="Time: 5:00 PM"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+
+    <!-- Available Seats -->
+    <TextView
+        android:id="@+id/availableSeatsTextView"
+        android:text="Seats Available: 3"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+
+    <!-- Button to chat or join the ride -->
+    <Button
+        android:id="@+id/chatButton"
+        android:text="Chat with Driver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:textColor="#fff"
+        android:onClick="openChat" />
+
+</LinearLayout>

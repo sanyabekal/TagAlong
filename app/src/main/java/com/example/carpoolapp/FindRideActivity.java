@@ -1,5 +1,6 @@
 package com.example.carpoolapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -18,6 +19,7 @@ public class FindRideActivity extends AppCompatActivity {
     private ListView rideListView;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> rideList;
+    private ArrayList<String> rideDates, rideTimes, rideSeats;
 
     private FirebaseFirestore db;
 
@@ -35,10 +37,33 @@ public class FindRideActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         rideList = new ArrayList<>();
+        rideDates = new ArrayList<>();
+        rideTimes = new ArrayList<>();
+        rideSeats = new ArrayList<>();
+
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, rideList);
         rideListView.setAdapter(adapter);
 
         searchButton.setOnClickListener(v -> searchRides());
+
+        // Set an item click listener on the ListView to pass data to RideDetailsActivity
+        rideListView.setOnItemClickListener((parent, view, position, id) -> {
+            // Get selected ride details
+            String rideDate = rideDates.get(position);
+            String rideTime = rideTimes.get(position);
+            String ridePickup = pickupInput.getText().toString().trim();
+            String rideDestination = destinationInput.getText().toString().trim();
+            int availableSeats = Integer.parseInt(rideSeats.get(position));
+
+            // Pass the details to RideDetailsActivity
+            Intent intent = new Intent(FindRideActivity.this, RideDetailsActivity.class);
+            intent.putExtra("source", ridePickup);
+            intent.putExtra("destination", rideDestination);
+            intent.putExtra("time", rideTime);
+            intent.putExtra("date", rideDate);
+            intent.putExtra("seatsAvailable", availableSeats);
+            startActivity(intent);
+        });
     }
 
     private void searchRides() {
@@ -60,6 +85,10 @@ public class FindRideActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     rideList.clear();
+                    rideDates.clear();
+                    rideTimes.clear();
+                    rideSeats.clear();
+
                     if (queryDocumentSnapshots.isEmpty()) {
                         rideList.add("No rides found.");
                     } else {
@@ -70,6 +99,11 @@ public class FindRideActivity extends AppCompatActivity {
                                     "\nDestination: " + doc.getString("destination") +
                                     "\nSeats: " + doc.getLong("seats");
                             rideList.add(rideInfo);
+
+                            // Store additional details to pass to the next activity
+                            rideDates.add(doc.getString("date"));
+                            rideTimes.add(doc.getString("time"));
+                            rideSeats.add(doc.getLong("seats").toString());
                         }
                     }
                     adapter.notifyDataSetChanged();
