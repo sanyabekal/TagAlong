@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
         android:orientation="vertical"
         android:padding="32dp"
         android:gravity="center"
@@ -12,17 +13,19 @@
 
         <Button
             android:id="@+id/postRideBtn"
-            android:text="Post a Ride"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:text="Post a Ride"
+            android:visibility="visible"
+            tools:visibility="visible" />
 
         <Button
             android:id="@+id/findRideBtn"
-            android:text="Find a Ride"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:text="Find a Ride" />
 
         <Button
             android:id="@+id/profileBtn"

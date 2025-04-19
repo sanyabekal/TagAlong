@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.carpoolapp.R;
 import com.example.carpoolapp.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
@@ -23,9 +25,12 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        dashboardViewModel.getText().observe(getViewLifecycleOwner(), binding.textDashboard::setText);
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        binding.dashboardImage.setImageResource(R.drawable.ic_launcher_foreground); // or any image
+        binding.startButton.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "Start button clicked!", Toast.LENGTH_SHORT).show();
+        });
         return root;
     }
 
